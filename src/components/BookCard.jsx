@@ -21,7 +21,7 @@ export default function BookCard({ book, onSelect }) {
         <h3 className="font-semibold text-sepia-800 line-clamp-2 mb-1">
           {book.title}
         </h3>
-
+0
         <p className="text-sm text-sepia-600 mb-2">
           {book.authors?.[0]?.name || "Unknown Author"}
         </p>
