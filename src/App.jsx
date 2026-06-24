@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import controlsBar from "./components/controlsBar";
+import ControlsBar from "./components/ControlsBar";
 import BooksGrid from "./components/BooksGrid";
 import { data } from "./data";
 import Footer from "./components/footer";
