@@ -28,7 +28,8 @@ It provides an instant and smooth experience for exploring a large collection of
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Ariyando1/Advanced-library.git
+https://github.com/Ariyando1/Advanced-library.git
+cd Advanced-library
 npm install
 npm run dev
