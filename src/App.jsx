@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import ControlsBar from "./components/ControlsBar";
+import controlsBar from "./components/controlsBar";
 import BooksGrid from "./components/BooksGrid";
 import { data } from "./data";
 import Footer from "./components/footer";
@@ -79,7 +79,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <ControlsBar
+      <controlsBar
         search={search}
         setSearch={setSearch}
         category={category}
