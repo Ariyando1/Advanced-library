@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import ControlsBar from "./components/ControlsBar";
+import ControlsBar from "./components/ControlsBar"; // ✅ درست
 import BooksGrid from "./components/BooksGrid";
 import { data } from "./data";
 import Footer from "./components/footer";
 import { Document } from "flexsearch";
-
 
 const index = new Document({
   document: {
@@ -28,7 +27,6 @@ export default function App() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [searchResultsIds, setSearchResultsIds] = useState(null);
 
-  // منطق جست‌وجو
   useEffect(() => {
     if (!search || search.trim() === "") {
       setSearchResultsIds(null);
@@ -36,16 +34,8 @@ export default function App() {
     }
 
     try {
-      // استفاده از موتور جست‌وجوی آماده شده در بالا
       const results = index.search(search);
-
       if (results) {
-        const formattedForExercise = results.map((res) => ({
-          field: res.field,
-          result: res.result,
-        }));
-        console.log( formattedForExercise);
-
         const allIds = [...new Set(results.flatMap((res) => res.result || []))];
         setSearchResultsIds(allIds);
       }
@@ -54,7 +44,6 @@ export default function App() {
     }
   }, [search]);
 
-  // فیلتر و مرتب‌سازی
   const filteredBooks = books
     .filter((book) => {
       if (searchResultsIds !== null) {
@@ -79,7 +68,8 @@ export default function App() {
   return (
     <div>
       <Header />
-      <controlsBar
+      {/* ✅ اینجا اسم رو درست کردم: ControlsBar (با C بزرگ) */}
+      <ControlsBar
         search={search}
         setSearch={setSearch}
         category={category}
@@ -95,7 +85,6 @@ export default function App() {
 
       <Footer />
 
-      {/* مودال نمایش جزئیات کتاب */}
       {selectedBook && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white p-6 rounded-xl w-full max-w-[450px] shadow-2xl">
@@ -108,7 +97,6 @@ export default function App() {
             <div className="max-h-[200px] overflow-y-auto mb-6 text-gray-600 text-sm leading-relaxed">
               {selectedBook.summaries?.[0] || "خلاصه‌ای برای این کتاب ثبت نشده است."}
             </div>
-
             <button
               className="w-full py-2 bg-emerald-700 text-white rounded-lg font-bold hover:bg-emerald-800 transition-colors"
               onClick={() => setSelectedBook(null)}
